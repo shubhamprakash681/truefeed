@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-import Message, { IMessage } from "./Message";
+import { IMessage } from "./Message";
 
 interface IUser {
   username: string;
@@ -52,7 +52,7 @@ const UserSchema: Schema<IUser> = new Schema({
     type: Boolean,
     default: true,
   },
-  messages: [Message],
+  messages: [],
 });
 
 // const UserModel = on susequent run, return already created model || on first run, create new model
