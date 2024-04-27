@@ -16,7 +16,7 @@ const sendVerificationEmail = async (
     });
 
     return {
-      success: false,
+      success: true,
       message: "Verification email sent successfully",
     };
   } catch (error) {

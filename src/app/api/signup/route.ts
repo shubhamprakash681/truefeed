@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import sendVerificationEmail from "@/helpers/sendVerificationEmail";
 import { StatusCodes } from "http-status-codes";
 
-const POST = async (req: Request) => {
+export const POST = async (req: Request) => {
   await connectDB();
 
   try {
@@ -74,6 +74,8 @@ const POST = async (req: Request) => {
       verificationCode
     );
 
+    // console.log("here, emailResponse: ", emailResponse);
+
     if (!emailResponse.success) {
       return Response.json(
         {
@@ -84,7 +86,7 @@ const POST = async (req: Request) => {
       );
     }
 
-    Response.json(
+    return Response.json(
       {
         success: true,
         message: "User registered successfully. Please verify your email",
@@ -105,5 +107,3 @@ const POST = async (req: Request) => {
     );
   }
 };
-
-export default POST;
