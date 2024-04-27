@@ -3,12 +3,38 @@ import UserModel from "@/model/User";
 import bcrypt from "bcryptjs";
 import sendVerificationEmail from "@/helpers/sendVerificationEmail";
 import { StatusCodes } from "http-status-codes";
+import { signupSchemaValidator } from "@/schemas/signupSchema";
 
 export const POST = async (req: Request) => {
   await connectDB();
 
   try {
     const { username, email, password } = await req.json();
+
+    const validationRes = signupSchemaValidator.safeParse({
+      username,
+      email,
+      password,
+    });
+    // console.log("validationRes: ", validationRes);
+
+    if (!validationRes.success) {
+      const validationErrors = validationRes.error.errors.map(
+        (err) => err.message
+      );
+
+      return Response.json(
+        {
+          success: false,
+          message: validationErrors.length
+            ? validationErrors.join(", ")
+            : "Invalid query parameter",
+        },
+        {
+          status: StatusCodes.BAD_REQUEST,
+        }
+      );
+    }
 
     const isExistingUsernameAndVerified = await UserModel.findOne({
       username,

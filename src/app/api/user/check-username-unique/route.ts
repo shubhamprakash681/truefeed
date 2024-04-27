@@ -22,8 +22,9 @@ export const GET = async (req: Request) => {
     // console.log("validationRes: ", validationRes);
 
     if (!validationRes.success) {
-      const usernameErrors =
-        validationRes.error.format().username?._errors || [];
+      const usernameErrors = validationRes.error.errors.map(
+        (err) => err.message
+      );
 
       return Response.json(
         {
