@@ -11,25 +11,32 @@ export const authOption: NextAuthOptions = {
       name: "Credentials",
 
       credentials: {
-        email: { label: "Email", type: "text" },
+        identifier: { label: "Identifier", type: "text" },
         password: { label: "Password", type: "password" },
       },
 
       async authorize(credentials, req): Promise<any> {
+        // console.log("here, cred: ", credentials);
+
         if (
-          credentials?.email.trim() === "" ||
+          credentials?.identifier.trim() === "" ||
           credentials?.password.trim() === ""
         ) {
-          throw new Error("Please enter email and password to continue");
+          throw new Error("Please enter identifier and password to continue");
         }
 
         await connectDB();
 
         try {
-          const user = await UserModel.findOne({ email: credentials?.email });
+          const user = await UserModel.findOne({
+            $or: [
+              { email: credentials?.identifier },
+              { username: credentials?.identifier },
+            ],
+          });
 
           if (!user) {
-            throw new Error("No user found with this email");
+            throw new Error("No user found with this email or username");
           }
 
           if (!user.isUserVerified) {
