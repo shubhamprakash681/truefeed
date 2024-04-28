@@ -14,7 +14,7 @@ export const POST = async (req: Request) => {
       verificationCode,
     });
 
-    console.log("validationRes: ", validationRes);
+    // console.log("validationRes: ", validationRes);
 
     if (!validationRes.success) {
       const validationErrors = validationRes.error.errors.map(

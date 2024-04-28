@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Link from "next/link";
@@ -11,12 +11,10 @@ import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { signupSchemaValidator } from "@/schemas/signupSchema";
 import { ApiResponse } from "@/types/ApiResponse";
-import { title } from "process";
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -86,7 +84,7 @@ const SignupPage: React.FC = () => {
         description: response.data.message,
       });
 
-      router.replace(`/verify?username=${username}`);
+      router.replace(`/verify/${username}`);
     } catch (err) {
       console.error("Error signing up", err);
 

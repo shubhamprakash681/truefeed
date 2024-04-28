@@ -7,3 +7,9 @@ export const verifySchemaValidator = z.object({
     .string()
     .length(6, { message: "Verification code must be of 6 digits" }),
 });
+
+export const verifyAccountFormValidator = z.object({
+  verificationCode: z
+    .string()
+    .length(6, { message: "Verification code must be of 6 digits" }),
+});
