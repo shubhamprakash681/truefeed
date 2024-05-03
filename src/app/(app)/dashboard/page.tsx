@@ -149,11 +149,11 @@ const DashboardPage = () => {
   const profileUrl = `${baseUrl}/u/${username}`;
 
   return (
-    <div className="my-8 md: mx-8 lg: mx-auto p6 bg-white rounded w-full max-w-6xl">
+    <div className="my-8 md:mx-8 lg:mx-auto p6 bg-white rounded w-full max-w-6xl">
       <h1 className="text-4xl font-bold mb-4">User Dashboard</h1>
 
       <div className="mb-4">
-        <h2 className=" text-lg font-semibold mb-2">Copy Your Unique Link</h2>
+        <h2 className="text-lg font-semibold mb-2">Copy Your Unique Link</h2>
         <div className="flex items-center">
           <input
             type="text"
@@ -193,7 +193,7 @@ const DashboardPage = () => {
         )}
       </Button>
 
-      <div className=" mt-4 grid grid-cols-1 md: grid-cols-2 gap-6">
+      <div className=" mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
         {messages.length > 0 ? (
           messages.map((message) => <div>Message card</div>)
         ) : (
