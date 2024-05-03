@@ -12,6 +12,9 @@ export const GET = async (req: Request) => {
     const session = await getServerSession(authOption);
     const user = session?.user;
 
+    console.log("here, session: ", session);
+    console.log("here, user: ", user);
+
     if (!session || !user) {
       return Response.json(
         {
@@ -25,6 +28,7 @@ export const GET = async (req: Request) => {
     }
 
     const userId = new mongoose.Types.ObjectId(user._id);
+    console.log("here, userId: ", userId);
 
     // mongo db aggregation pipleing
     const aggregationPipeline = await UserModel.aggregate([
@@ -33,6 +37,8 @@ export const GET = async (req: Request) => {
       { $sort: { "messages.createdAt": -1 } },
       { $group: { _id: "$_id", messages: { $push: "$messages" } } },
     ]);
+
+    console.log("here, aggregationPipeline: ", aggregationPipeline);
 
     if (!aggregationPipeline || !aggregationPipeline.length) {
       return Response.json(
