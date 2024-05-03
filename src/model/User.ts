@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import { IMessage } from "./Message";
 
-interface IUser {
+export interface IUser {
   username: string;
   password: string;
   email: string;

@@ -5,6 +5,6 @@ export interface ApiResponse {
   message: string;
 
   // optional API response data
-  isAcceptingMessages?: boolean;
+  isAcceptingMessage?: boolean;
   messages?: IMessage[];
 }
