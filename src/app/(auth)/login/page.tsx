@@ -49,7 +49,7 @@ const LoginPage = () => {
         password: values.password,
       });
 
-      console.log("res: ", res);
+      // console.log("res: ", res);
 
       if (res?.error) {
         console.error("Error signing up", res.error);

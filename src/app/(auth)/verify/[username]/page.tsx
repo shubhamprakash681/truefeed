@@ -48,8 +48,6 @@ const VerifyAccount = () => {
     values: z.infer<typeof verifyAccountFormValidator>
   ) => {
     try {
-      console.log("values: ", values);
-
       setIsSubmitting(true);
 
       const response = await axios.post<ApiResponse>("/api/user/verify", {

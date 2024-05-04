@@ -38,9 +38,6 @@ const UserProfilePage = () => {
   const messageSubmitHandler = async (
     values: z.infer<typeof messageFormValidator>
   ) => {
-    console.log("values: ", values);
-    console.log("messageForm: ", messageForm);
-
     setIsSubmittingFeedback(true);
 
     try {
