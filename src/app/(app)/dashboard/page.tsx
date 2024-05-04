@@ -146,7 +146,7 @@ const DashboardPage = () => {
   const { username } = session.user as IUser;
 
   const baseUrl = `${window.location.protocol}//${window.location.host}`;
-  const profileUrl = `${baseUrl}/u/${username}`;
+  const profileUrl = `${baseUrl}/user/${username}`;
 
   return (
     <div className="my-8 md:mx-8 lg:mx-auto p-6 bg-white rounded w-full max-w-6xl">

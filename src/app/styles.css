@@ -1,0 +1,4 @@
+.page-container {
+    height: calc(100svh - 56px);
+    overflow-y: auto;
+}
