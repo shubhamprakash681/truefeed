@@ -8,7 +8,7 @@ export const POST = async (req: Request) => {
   try {
     await connectDB();
 
-    const validatorRes = messageSchemaValidator.safeParse(req.json());
+    const validatorRes = messageSchemaValidator.safeParse(await req.json());
 
     if (!validatorRes.success) {
       const validationErrors = validatorRes.error.errors.map(

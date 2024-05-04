@@ -24,7 +24,9 @@ export const POST = async (req: Request) => {
       );
     }
 
-    const validationResult = acceptMessagesValidator.safeParse(req.json);
+    const validationResult = acceptMessagesValidator.safeParse(
+      await req.json()
+    );
 
     if (!validationResult.success) {
       const validationErrors = validationResult.error.errors.map(

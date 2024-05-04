@@ -8,3 +8,10 @@ export const messageSchemaValidator = z.object({
     .min(10, { message: "Content must be of atleast 10 characters" })
     .max(300, "Content must be no longer than 300 characters"),
 });
+
+export const messageFormValidator = z.object({
+  content: z
+    .string()
+    .min(10, { message: "Content must be of atleast 10 characters" })
+    .max(300, "Content must be no longer than 300 characters"),
+});
